@@ -171,7 +171,7 @@ print(f"Tracks after velocity filter: {len(filtered)}")
 
 # If nothing passes → fallback
 if len(filtered) == 0:
-    print("⚠️ No tracks passed velocity filter — using all tracks")
+    print("No tracks passed velocity filter — using all tracks")
     filtered = radec_tracks
 
 # ML only if enough samples
@@ -183,7 +183,7 @@ if len(filtered) >= 5:
 
     final_tracks = [t for t, l in zip(filtered, labels) if l == 1]
 else:
-    print("⚠️ Too few tracks for ML — skipping ML filter")
+    print("Too few tracks for ML — skipping ML filter")
     final_tracks = filtered
 
 # -----------------------------
@@ -275,7 +275,7 @@ with open("mpc_report.txt", "w") as f:
         for t, ra, dec in track:
             f.write(mpc_line(obj, t, ra, dec) + "\n")
 
-print("\n✅ DONE: MPC report + orbit estimation complete")
+print("\n DONE: MPC report + orbit estimation complete")
 
 # -----------------------------
 # MPC FORMAT 
@@ -328,4 +328,4 @@ with open(output_file, "w") as f:
         # optional: add velocity comment line
         f.write(f"# Velocity: {vel:.2f} arcsec/hr\n\n")
 
-print(f"✅ MPC file saved as: {output_file}")
+print(f"MPC file saved as: {output_file}")
